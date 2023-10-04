@@ -1,0 +1,44 @@
+version: '3.3'
+services:
+  # Redmine custom service.
+  app:
+    build:
+      context: .
+    image: redmine:bkp_v1.0
+    ports:
+      - 80:3000
+    volumes:
+      - ./data/docker_redmine-plugins:/usr/src/redmine/plugins
+      - ./data/docker_redmine-themes:/usr/src/redmine/public/themes
+      - ./data/docker_redmine-data:/usr/src/redmine/files
+      - ./data/docker_redmine-logs:/usr/src/redmine/log
+    environment:
+      TZ: Europe/Kyiv
+      REDMINE_DB_MYSQL: db
+      REDMINE_DB_DATABASE: redmine
+      REDMINE_DB_USERNAME: root
+      REDMINE_DB_PASSWORD: root_password
+    depends_on:
+      - db
+    networks:
+      - redmine-network
+    restart: always
+  # MySQL database service
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: redmine
+    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
+    volumes:
+      - ./data/mysql_data:/var/lib/mysql
+      - ./data/mysql_logs:/var/log/mysql
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    networks:
+      - redmine-network
+    restart: always
+
+
+networks:
+  redmine-network:
+    driver: bridge
