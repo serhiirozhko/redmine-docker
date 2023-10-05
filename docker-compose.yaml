@@ -9,20 +9,24 @@ services:
     ports:
       - 80:3000
     volumes:
-      - ./app/data/docker_redmine_plugins:/usr/src/redmine/plugins
-      - ./app/data/docker_redmine_themes:/usr/src/redmine/public/themes
-      - ./app/data/docker_redmine_data:/usr/src/redmine/files
-      - ./app/data/docker_redmine_logs:/usr/src/redmine/log
-      # Configure Email delivery, and notifications
-      - ./app/data/docker_redmine_config/configuration.yml:/usr/src/redmine/config/configuration.yml
+      - ./app/data/docker_redmine_plugins:${REDMINE_PLUGINS}
+      - ./app/data/docker_redmine_themes:${REDMINE_THEMES}
+      - ./app/data/docker_redmine_data:${REDMINE_DATA}
+      - ./app/data/docker_redmine_logs:${REDMINE_LOGS}
+      - ./app/data/docker_redmine_config/configuration.yml:${REDMINE_CONFIG}
     environment:
       TZ: Europe/Kyiv
       REDMINE_DB_MYSQL: db
-      REDMINE_DB_DATABASE: redmine
-      REDMINE_DB_USERNAME: root
-      REDMINE_DB_PASSWORD: root_password
+      REDMINE_DB_DATABASE: ${REDMINE_DB_NAME}
+      REDMINE_DB_USERNAME: ${REDMINE_DB_USER}
+      REDMINE_DB_PASSWORD: ${REDMINE_DB_PASSWORD}
     depends_on:
       - db
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
     networks:
       - redmine-network
     restart: always
@@ -33,12 +37,18 @@ services:
     image: mysql:bkp_db_mysql_5.7
     container_name: bkp_mysql
     environment:
-      MYSQL_ROOT_PASSWORD: root_password
-      MYSQL_DATABASE: redmine
+      MYSQL_ROOT_PASSWORD: ${REDMINE_DB_PASSWORD}
+      MYSQL_DATABASE: ${REDMINE_DB_NAME}
     command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
     volumes:
       - ./db/data/mysql_data:/var/lib/mysql
       - ./db/data/mysql_logs:/var/log/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u $REDMINE_DB_USER --password=$REDMINE_DB_PASSWORD"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
     networks:
       - redmine-network
     restart: always
