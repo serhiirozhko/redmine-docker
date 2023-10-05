@@ -13,6 +13,8 @@ services:
       - ./app/data/docker_redmine_themes:/usr/src/redmine/public/themes
       - ./app/data/docker_redmine_data:/usr/src/redmine/files
       - ./app/data/docker_redmine_logs:/usr/src/redmine/log
+      # Configure Email delivery, and notifications
+      - ./app/data/docker_redmine_config/configuration.yml:/usr/src/redmine/config/configuration.yml
     environment:
       TZ: Europe/Kyiv
       REDMINE_DB_MYSQL: db
