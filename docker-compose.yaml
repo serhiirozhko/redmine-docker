@@ -4,8 +4,8 @@ services:
   app:
     build:
       context: ./app
-    image: redmine:bkp_app_redmine_5.0.6
-    container_name: bkp_redmine_5.0.6
+    image: redmine:${REDMINE_IMG_VER}
+    container_name: ${REDMINE_IMG_VER}
     ports:
       - 80:3000
     volumes:
@@ -24,9 +24,9 @@ services:
       - db
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
+      interval: 30s
+      timeout: 10s
+      retries: 5
     networks:
       - redmine-network
     restart: always
@@ -34,20 +34,20 @@ services:
   db:
     build:
       context: ./db
-    image: mysql:bkp_db_mysql_5.7
+    image: mysql:${DB_IMG_VER}
     container_name: bkp_mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${REDMINE_DB_PASSWORD}
       MYSQL_DATABASE: ${REDMINE_DB_NAME}
     command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
     volumes:
-      - ./db/data/mysql_data:/var/lib/mysql
-      - ./db/data/mysql_logs:/var/log/mysql
+      - ./db/data/mysql_data:${DB_DATA}
+      - ./db/data/mysql_logs:${DB_LOGS}
     healthcheck:
       test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u $REDMINE_DB_USER --password=$REDMINE_DB_PASSWORD"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
+      interval: 30s
+      timeout: 10s
+      retries: 5
       start_period: 60s
     networks:
       - redmine-network
