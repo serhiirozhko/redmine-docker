@@ -3,15 +3,16 @@ services:
   # Redmine custom service.
   app:
     build:
-      context: .
-    image: redmine:bkp_v1.0
+      context: ./app
+    image: redmine:bkp_app_redmine_5.0.6
+    container_name: bkp_redmine_5.0.6
     ports:
       - 80:3000
     volumes:
-      - ./data/docker_redmine-plugins:/usr/src/redmine/plugins
-      - ./data/docker_redmine-themes:/usr/src/redmine/public/themes
-      - ./data/docker_redmine-data:/usr/src/redmine/files
-      - ./data/docker_redmine-logs:/usr/src/redmine/log
+      - ./app/data/docker_redmine_plugins:/usr/src/redmine/plugins
+      - ./app/data/docker_redmine_themes:/usr/src/redmine/public/themes
+      - ./app/data/docker_redmine_data:/usr/src/redmine/files
+      - ./app/data/docker_redmine_logs:/usr/src/redmine/log
     environment:
       TZ: Europe/Kyiv
       REDMINE_DB_MYSQL: db
@@ -25,15 +26,17 @@ services:
     restart: always
   # MySQL database service
   db:
-    image: mysql:5.7
+    build:
+      context: ./db
+    image: mysql:bkp_db_mysql_5.7
+    container_name: bkp_mysql
     environment:
       MYSQL_ROOT_PASSWORD: root_password
       MYSQL_DATABASE: redmine
     command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
     volumes:
-      - ./data/mysql_data:/var/lib/mysql
-      - ./data/mysql_logs:/var/log/mysql
-      - ./init-scripts:/docker-entrypoint-initdb.d
+      - ./db/data/mysql_data:/var/lib/mysql
+      - ./db/data/mysql_logs:/var/log/mysql
     networks:
       - redmine-network
     restart: always
