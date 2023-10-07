@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.8'
 services:
   # Redmine custom service.
   app:
@@ -15,7 +15,7 @@ services:
       - ./app/data/docker_redmine_logs:${REDMINE_LOGS}
       # Configuration files
       - ./app/data/docker_redmine_config/configuration.yml:${REDMINE_CONFIG}
-      - ./app/data/docker_redmine_config/additional_environment.rb:${REDMINE_LOG_CONFIG}
+      #- ./app/data/docker_redmine_config/additional_environment.rb:${REDMINE_LOG_CONFIG}
     environment:
       TZ: Europe/Kyiv
       REDMINE_DB_MYSQL: db
