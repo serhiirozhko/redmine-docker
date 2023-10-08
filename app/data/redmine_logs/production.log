@@ -1,0 +1,253 @@
+# Logfile created on 2023-10-08 23:36:22 +0300 by logger.rb/v1.5.0
+W, [2023-10-08T23:36:30.346350 #1]  WARN -- : Creating scope :system. Overwriting existing method Enumeration.system.
+W, [2023-10-08T23:36:30.585988 #1]  WARN -- : Creating scope :sorted. Overwriting existing method User.sorted.
+W, [2023-10-08T23:36:30.707998 #1]  WARN -- : Creating scope :sorted. Overwriting existing method Group.sorted.
+I, [2023-10-08T23:36:48.586407 #1]  INFO -- : Started GET "/" for 127.0.0.1 at 2023-10-08 23:36:48 +0300
+I, [2023-10-08T23:36:48.588718 #1]  INFO -- : Processing by WelcomeController#index as */*
+I, [2023-10-08T23:36:48.694061 #1]  INFO -- :   Current user: anonymous
+I, [2023-10-08T23:36:48.807160 #1]  INFO -- :   Rendered welcome/index.html.erb within layouts/base (Duration: 8.3ms | Allocations: 4318)
+I, [2023-10-08T23:36:48.841965 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 43.2ms | Allocations: 14042)
+I, [2023-10-08T23:36:48.842436 #1]  INFO -- : Completed 200 OK in 254ms (Views: 40.2ms | ActiveRecord: 21.7ms | Allocations: 89160)
+I, [2023-10-08T23:37:16.875665 #1]  INFO -- : Started GET "/issues" for 192.168.0.105 at 2023-10-08 23:37:16 +0300
+I, [2023-10-08T23:37:16.876804 #1]  INFO -- : Processing by IssuesController#index as HTML
+I, [2023-10-08T23:37:16.882242 #1]  INFO -- :   Current user: anonymous
+I, [2023-10-08T23:37:17.134584 #1]  INFO -- :   Rendered issues/index.html.erb within layouts/base (Duration: 58.4ms | Allocations: 21944)
+I, [2023-10-08T23:37:17.181377 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 105.2ms | Allocations: 32363)
+I, [2023-10-08T23:37:17.181853 #1]  INFO -- : Completed 200 OK in 305ms (Views: 99.5ms | ActiveRecord: 43.4ms | Allocations: 74954)
+I, [2023-10-08T23:37:19.050646 #1]  INFO -- : Started GET "/" for 127.0.0.1 at 2023-10-08 23:37:19 +0300
+I, [2023-10-08T23:37:19.051613 #1]  INFO -- : Processing by WelcomeController#index as */*
+I, [2023-10-08T23:37:19.055898 #1]  INFO -- :   Current user: anonymous
+I, [2023-10-08T23:37:19.071561 #1]  INFO -- :   Rendered welcome/index.html.erb within layouts/base (Duration: 1.2ms | Allocations: 362)
+I, [2023-10-08T23:37:19.082543 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 12.3ms | Allocations: 4024)
+I, [2023-10-08T23:37:19.082927 #1]  INFO -- : Completed 200 OK in 31ms (Views: 15.0ms | ActiveRecord: 4.7ms | Allocations: 5931)
+I, [2023-10-08T23:37:19.240737 #1]  INFO -- : Started GET "/login" for 192.168.0.105 at 2023-10-08 23:37:19 +0300
+I, [2023-10-08T23:37:19.242707 #1]  INFO -- : Processing by AccountController#login as HTML
+I, [2023-10-08T23:37:19.247192 #1]  INFO -- :   Current user: anonymous
+I, [2023-10-08T23:37:19.258962 #1]  INFO -- :   Rendered account/login.html.erb within layouts/base (Duration: 8.8ms | Allocations: 1639)
+I, [2023-10-08T23:37:19.280849 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 30.8ms | Allocations: 6442)
+I, [2023-10-08T23:37:19.281440 #1]  INFO -- : Completed 200 OK in 38ms (Views: 24.9ms | ActiveRecord: 9.0ms | Allocations: 7940)
+I, [2023-10-08T23:37:24.097503 #1]  INFO -- : Started POST "/login" for 192.168.0.105 at 2023-10-08 23:37:24 +0300
+I, [2023-10-08T23:37:24.098612 #1]  INFO -- : Processing by AccountController#login as HTML
+I, [2023-10-08T23:37:24.098709 #1]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"wr31Ib8rC5AAZRs5GuPN1ownLlEyfIdh35XCVllWsiBeCnuPiCW8YTML7UqILmH7Yo+iX4nctsfpWfERPQMvxA==", "back_url"=>"/issues", "username"=>"admin", "password"=>"[FILTERED]", "login"=>"Вход"}
+I, [2023-10-08T23:37:24.104121 #1]  INFO -- :   Current user: anonymous
+I, [2023-10-08T23:37:24.116823 #1]  INFO -- : Successful authentication for 'admin' from 192.168.0.105 at 2023-10-08 20:37:24 UTC
+I, [2023-10-08T23:37:24.155783 #1]  INFO -- : Redirected to http://bkp-redmine.local/issues
+I, [2023-10-08T23:37:24.156047 #1]  INFO -- : Completed 302 Found in 57ms (ActiveRecord: 23.2ms | Allocations: 8859)
+I, [2023-10-08T23:37:24.185635 #1]  INFO -- : Started GET "/issues" for 192.168.0.105 at 2023-10-08 23:37:24 +0300
+I, [2023-10-08T23:37:24.187166 #1]  INFO -- : Processing by IssuesController#index as HTML
+I, [2023-10-08T23:37:24.195511 #1]  INFO -- :   Current user: admin (id=1)
+I, [2023-10-08T23:37:24.325428 #1]  INFO -- :   Rendered issues/index.html.erb within layouts/base (Duration: 56.0ms | Allocations: 22290)
+I, [2023-10-08T23:37:24.353483 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 84.1ms | Allocations: 28914)
+I, [2023-10-08T23:37:24.354271 #1]  INFO -- : Completed 200 OK in 167ms (Views: 75.5ms | ActiveRecord: 22.9ms | Allocations: 54060)
+I, [2023-10-08T23:37:49.279891 #1]  INFO -- : Started GET "/" for 127.0.0.1 at 2023-10-08 23:37:49 +0300
+I, [2023-10-08T23:37:49.280662 #1]  INFO -- : Processing by WelcomeController#index as */*
+I, [2023-10-08T23:37:49.284100 #1]  INFO -- :   Current user: anonymous
+I, [2023-10-08T23:37:49.295266 #1]  INFO -- :   Rendered welcome/index.html.erb within layouts/base (Duration: 1.0ms | Allocations: 364)
+I, [2023-10-08T23:37:49.304927 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 10.7ms | Allocations: 4033)
+I, [2023-10-08T23:37:49.305259 #1]  INFO -- : Completed 200 OK in 24ms (Views: 13.6ms | ActiveRecord: 3.7ms | Allocations: 5877)
+I, [2023-10-08T23:38:11.668975 #1]  INFO -- : Started GET "/admin" for 192.168.0.105 at 2023-10-08 23:38:11 +0300
+I, [2023-10-08T23:38:11.670449 #1]  INFO -- : Processing by AdminController#index as HTML
+I, [2023-10-08T23:38:11.677117 #1]  INFO -- :   Current user: admin (id=1)
+I, [2023-10-08T23:38:11.691371 #1]  INFO -- :   Rendered admin/index.html.erb within layouts/admin (Duration: 8.1ms | Allocations: 2218)
+I, [2023-10-08T23:38:11.712444 #1]  INFO -- :   Rendered layouts/base.html.erb (Duration: 20.1ms | Allocations: 4955)
+I, [2023-10-08T23:38:11.712616 #1]  INFO -- :   Rendered layout layouts/admin.html.erb (Duration: 29.5ms | Allocations: 7459)
+I, [2023-10-08T23:38:11.713055 #1]  INFO -- : Completed 200 OK in 42ms (Views: 30.4ms | ActiveRecord: 5.1ms | Allocations: 9464)
+I, [2023-10-08T23:38:13.423830 #1]  INFO -- : Started GET "/settings" for 192.168.0.105 at 2023-10-08 23:38:13 +0300
+I, [2023-10-08T23:38:13.424832 #1]  INFO -- : Processing by SettingsController#index as HTML
+I, [2023-10-08T23:38:13.430602 #1]  INFO -- :   Current user: admin (id=1)
+I, [2023-10-08T23:38:15.612636 #1]  INFO -- :   Rendered settings/edit.html.erb within layouts/admin (Duration: 2174.2ms | Allocations: 241056)
+I, [2023-10-08T23:38:15.632734 #1]  INFO -- :   Rendered layouts/base.html.erb (Duration: 12.4ms | Allocations: 4198)
+I, [2023-10-08T23:38:15.632929 #1]  INFO -- :   Rendered layout layouts/admin.html.erb (Duration: 2194.5ms | Allocations: 246989)
+I, [2023-10-08T23:38:15.633349 #1]  INFO -- : Completed 200 OK in 2208ms (Views: 2125.0ms | ActiveRecord: 74.0ms | Allocations: 249382)
+I, [2023-10-08T23:38:19.531819 #1]  INFO -- : Started GET "/" for 127.0.0.1 at 2023-10-08 23:38:19 +0300
+I, [2023-10-08T23:38:19.533126 #1]  INFO -- : Processing by WelcomeController#index as */*
+I, [2023-10-08T23:38:19.537079 #1]  INFO -- :   Current user: anonymous
+I, [2023-10-08T23:38:19.549704 #1]  INFO -- :   Rendered welcome/index.html.erb within layouts/base (Duration: 1.1ms | Allocations: 367)
+I, [2023-10-08T23:38:19.559148 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 10.6ms | Allocations: 4042)
+I, [2023-10-08T23:38:19.559464 #1]  INFO -- : Completed 200 OK in 26ms (Views: 11.9ms | ActiveRecord: 5.8ms | Allocations: 5956)
+I, [2023-10-08T23:38:25.684038 #1]  INFO -- : Started POST "/settings/edit?tab=notifications" for 192.168.0.105 at 2023-10-08 23:38:25 +0300
+I, [2023-10-08T23:38:25.686384 #1]  INFO -- : Processing by SettingsController#edit as HTML
+I, [2023-10-08T23:38:25.686522 #1]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"rAjPXrjeFj+6ydtww3sp/7MoethHvM+9mE/XhqFPNnqVfntms3LaXezDZUn0HYKpmlB/m+3st8ib4KxQjUALCA==", "settings"=>{"mail_from"=>"atestservices@gmail.com", "plain_text_mail"=>"1", "show_status_changes_in_mail_subject"=>"1", "notified_events"=>["", "issue_added", "issue_updated", "news_added", "news_comment_added", "document_added", "file_added", "message_posted", "wiki_content_added", "wiki_content_updated"], "emails_header"=>"ntcj;\r\n';juhgtftuyj", "emails_footer"=>"You have received this notification because you have either subscribed to it, or are involved in it.\r\nTo change your notification preferences, please click here: http://hostname/my/account"}, "commit"=>"Зберегти", "tab"=>"notifications"}
+I, [2023-10-08T23:38:25.705988 #1]  INFO -- :   Current user: admin (id=1)
+I, [2023-10-08T23:38:25.724549 #1]  INFO -- : Redirected to http://bkp-redmine.local/settings?tab=notifications
+I, [2023-10-08T23:38:25.724858 #1]  INFO -- : Completed 302 Found in 38ms (ActiveRecord: 18.8ms | Allocations: 3508)
+I, [2023-10-08T23:38:25.754619 #1]  INFO -- : Started GET "/settings?tab=notifications" for 192.168.0.105 at 2023-10-08 23:38:25 +0300
+I, [2023-10-08T23:38:25.755467 #1]  INFO -- : Processing by SettingsController#index as HTML
+I, [2023-10-08T23:38:25.755550 #1]  INFO -- :   Parameters: {"tab"=>"notifications"}
+I, [2023-10-08T23:38:25.760404 #1]  INFO -- :   Current user: admin (id=1)
+I, [2023-10-08T23:38:25.912647 #1]  INFO -- :   Rendered settings/edit.html.erb within layouts/admin (Duration: 150.6ms | Allocations: 49544)
+I, [2023-10-08T23:38:25.929399 #1]  INFO -- :   Rendered layouts/base.html.erb (Duration: 10.6ms | Allocations: 4113)
+I, [2023-10-08T23:38:25.930165 #1]  INFO -- :   Rendered layout layouts/admin.html.erb (Duration: 168.1ms | Allocations: 55358)
+I, [2023-10-08T23:38:25.930804 #1]  INFO -- : Completed 200 OK in 175ms (Views: 151.2ms | ActiveRecord: 19.2ms | Allocations: 56704)
+I, [2023-10-08T23:38:29.080337 #1]  INFO -- : Started GET "/my/account" for 192.168.0.105 at 2023-10-08 23:38:29 +0300
+I, [2023-10-08T23:38:29.082711 #1]  INFO -- : Processing by MyController#account as HTML
+I, [2023-10-08T23:38:29.091381 #1]  INFO -- :   Current user: admin (id=1)
+I, [2023-10-08T23:38:29.199426 #1]  INFO -- :   Rendered my/account.html.erb within layouts/base (Duration: 101.3ms | Allocations: 28662)
+I, [2023-10-08T23:38:29.209899 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 111.9ms | Allocations: 32658)
+I, [2023-10-08T23:38:29.210372 #1]  INFO -- : Completed 200 OK in 127ms (Views: 102.0ms | ActiveRecord: 16.7ms | Allocations: 34563)
+I, [2023-10-08T23:38:33.092441 #1]  INFO -- : Started GET "/admin" for 192.168.0.105 at 2023-10-08 23:38:33 +0300
+I, [2023-10-08T23:38:33.093404 #1]  INFO -- : Processing by AdminController#index as HTML
+I, [2023-10-08T23:38:33.104233 #1]  INFO -- :   Current user: admin (id=1)
+I, [2023-10-08T23:38:33.110519 #1]  INFO -- :   Rendered admin/index.html.erb within layouts/admin (Duration: 3.4ms | Allocations: 1612)
+I, [2023-10-08T23:38:33.127741 #1]  INFO -- :   Rendered layouts/base.html.erb (Duration: 17.0ms | Allocations: 4437)
+I, [2023-10-08T23:38:33.127908 #1]  INFO -- :   Rendered layout layouts/admin.html.erb (Duration: 20.8ms | Allocations: 6141)
+I, [2023-10-08T23:38:33.128201 #1]  INFO -- : Completed 200 OK in 35ms (Views: 16.0ms | ActiveRecord: 9.8ms | Allocations: 7508)
+I, [2023-10-08T23:38:34.266527 #1]  INFO -- : Started GET "/users" for 192.168.0.105 at 2023-10-08 23:38:34 +0300
+I, [2023-10-08T23:38:34.270194 #1]  INFO -- : Processing by UsersController#index as HTML
+I, [2023-10-08T23:38:34.276541 #1]  INFO -- :   Current user: admin (id=1)
+I, [2023-10-08T23:38:34.306499 #1]  INFO -- :   Rendered users/index.html.erb within layouts/admin (Duration: 17.2ms | Allocations: 5660)
+I, [2023-10-08T23:38:34.327871 #1]  INFO -- :   Rendered layouts/base.html.erb (Duration: 18.2ms | Allocations: 4586)
+I, [2023-10-08T23:38:34.328038 #1]  INFO -- :   Rendered layout layouts/admin.html.erb (Duration: 38.8ms | Allocations: 11994)
+I, [2023-10-08T23:38:34.328392 #1]  INFO -- : Completed 200 OK in 58ms (Views: 38.5ms | ActiveRecord: 8.9ms | Allocations: 14885)
+I, [2023-10-08T23:38:36.370068 #1]  INFO -- : Started GET "/users/5/edit" for 192.168.0.105 at 2023-10-08 23:38:36 +0300
+I, [2023-10-08T23:38:36.371049 #1]  INFO -- : Processing by UsersController#edit as HTML
+I, [2023-10-08T23:38:36.371187 #1]  INFO -- :   Parameters: {"id"=>"5"}
+I, [2023-10-08T23:38:36.377012 #1]  INFO -- :   Current user: admin (id=1)
+I, [2023-10-08T23:38:36.485251 #1]  INFO -- :   Rendered users/edit.html.erb within layouts/admin (Duration: 98.7ms | Allocations: 30460)
+I, [2023-10-08T23:38:36.504277 #1]  INFO -- :   Rendered layouts/base.html.erb (Duration: 15.3ms | Allocations: 4451)
+I, [2023-10-08T23:38:36.504435 #1]  INFO -- :   Rendered layout layouts/admin.html.erb (Duration: 118.0ms | Allocations: 36663)
+I, [2023-10-08T23:38:36.504742 #1]  INFO -- : Completed 200 OK in 133ms (Views: 98.9ms | ActiveRecord: 22.0ms | Allocations: 40343)
+I, [2023-10-08T23:38:40.196362 #1]  INFO -- : Started PATCH "/users/5" for 192.168.0.105 at 2023-10-08 23:38:40 +0300
+I, [2023-10-08T23:38:40.198989 #1]  INFO -- : Processing by UsersController#update as HTML
+I, [2023-10-08T23:38:40.199683 #1]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"oNYj5yqxAuhP9cHSDmGj93rLJ+fMX6hPDY/I6/6ZZzCZoJffIR3Oihn/f+s5BwihU7MipGYP0DoOILM90pZaQg==", "user"=>{"login"=>"srozhko", "firstname"=>"Serhii", "lastname"=>"Rozhko", "mail"=>"vitalli.rozhko.2023@gmail.com", "language"=>"en", "admin"=>"1", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "generate_password"=>"[FILTERED]", "must_change_passwd"=>"0", "mail_notification"=>"all", "notified_project_ids"=>[""]}, "pref"=>{"notify_about_high_priority_issues"=>"0", "no_self_notified"=>"1", "auto_watch_on"=>["", "issue_contributed_to"], "hide_mail"=>"1", "time_zone"=>"", "comments_sorting"=>"asc", "warn_on_leaving_unsaved"=>"1", "textarea_font"=>"monospace", "recently_used_projects"=>"3", "history_default_tab"=>"notes", "toolbar_language_options"=>"c,cpp,csharp,css,diff,go,groovy,html,java,javascript,objc,perl,php,python,r,ruby,sass,scala,shell,sql,swift,xml,yaml", "default_issue_query"=>"", "default_project_query"=>""}, "send_information"=>"1", "commit"=>"Зберегти", "id"=>"5"}
+I, [2023-10-08T23:38:40.205490 #1]  INFO -- :   Current user: admin (id=1)
+I, [2023-10-08T23:38:40.251120 #1]  INFO -- : Enqueued ActionMailer::MailDeliveryJob (Job ID: 1dca0a3d-2073-4a2c-94c7-134bcab0f168) to Async(mailers) with arguments: "Mailer", "account_information", "deliver_now", {:args=>[#<GlobalID:0x00007f0209918a40 @uri=#<URI::GID gid://redmine-app/User/5>>, nil]}
+I, [2023-10-08T23:38:40.251873 #1]  INFO -- : Redirected to http://bkp-redmine.local/users/5/edit
+I, [2023-10-08T23:38:40.252087 #1]  INFO -- : Completed 302 Found in 52ms (ActiveRecord: 11.9ms | Allocations: 10877)
+I, [2023-10-08T23:38:40.260485 #1]  INFO -- : Performing ActionMailer::MailDeliveryJob (Job ID: 1dca0a3d-2073-4a2c-94c7-134bcab0f168) from Async(mailers) enqueued at 2023-10-08T20:38:40Z with arguments: "Mailer", "account_information", "deliver_now", {:args=>[#<GlobalID:0x00007f02098ea668 @uri=#<URI::GID gid://redmine-app/User/5>>, nil]}
+I, [2023-10-08T23:38:40.280969 #1]  INFO -- :   Rendered mailer/account_information.text.erb within layouts/mailer (Duration: 2.1ms | Allocations: 322)
+I, [2023-10-08T23:38:40.282249 #1]  INFO -- :   Rendered layout layouts/mailer.text.erb (Duration: 3.5ms | Allocations: 536)
+I, [2023-10-08T23:38:40.304575 #1]  INFO -- : Started GET "/users/5/edit" for 192.168.0.105 at 2023-10-08 23:38:40 +0300
+I, [2023-10-08T23:38:40.305753 #1]  INFO -- : Processing by UsersController#edit as HTML
+I, [2023-10-08T23:38:40.305851 #1]  INFO -- :   Parameters: {"id"=>"5"}
+I, [2023-10-08T23:38:40.323788 #1]  INFO -- :   Current user: admin (id=1)
+I, [2023-10-08T23:38:40.430654 #1]  INFO -- :   Rendered users/edit.html.erb within layouts/admin (Duration: 104.3ms | Allocations: 24661)
+I, [2023-10-08T23:38:40.453384 #1]  INFO -- :   Rendered layouts/base.html.erb (Duration: 16.5ms | Allocations: 4577)
+I, [2023-10-08T23:38:40.453612 #1]  INFO -- :   Rendered layout layouts/admin.html.erb (Duration: 127.3ms | Allocations: 30997)
+I, [2023-10-08T23:38:40.453947 #1]  INFO -- : Completed 200 OK in 148ms (Views: 103.6ms | ActiveRecord: 26.9ms | Allocations: 32770)
+E, [2023-10-08T23:38:40.808796 #1] ERROR -- : Email delivery error: 535-5.7.8 Username and Password not accepted. Learn more at
+
+I, [2023-10-08T23:38:40.809133 #1]  INFO -- : Performed ActionMailer::MailDeliveryJob (Job ID: 1dca0a3d-2073-4a2c-94c7-134bcab0f168) from Async(mailers) in 548.34ms
+I, [2023-10-08T23:38:49.738910 #1]  INFO -- : Started GET "/" for 127.0.0.1 at 2023-10-08 23:38:49 +0300
+I, [2023-10-08T23:38:49.739750 #1]  INFO -- : Processing by WelcomeController#index as */*
+I, [2023-10-08T23:38:49.743432 #1]  INFO -- :   Current user: anonymous
+I, [2023-10-08T23:38:49.752801 #1]  INFO -- :   Rendered welcome/index.html.erb within layouts/base (Duration: 0.9ms | Allocations: 367)
+I, [2023-10-08T23:38:49.762615 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 10.8ms | Allocations: 4065)
+I, [2023-10-08T23:38:49.762936 #1]  INFO -- : Completed 200 OK in 23ms (Views: 11.3ms | ActiveRecord: 4.0ms | Allocations: 5893)
+I, [2023-10-08T23:39:19.983086 #1]  INFO -- : Started GET "/" for 127.0.0.1 at 2023-10-08 23:39:19 +0300
+I, [2023-10-08T23:39:19.983924 #1]  INFO -- : Processing by WelcomeController#index as */*
+I, [2023-10-08T23:39:19.987941 #1]  INFO -- :   Current user: anonymous
+I, [2023-10-08T23:39:19.996682 #1]  INFO -- :   Rendered welcome/index.html.erb within layouts/base (Duration: 0.8ms | Allocations: 356)
+I, [2023-10-08T23:39:20.006152 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 10.3ms | Allocations: 4010)
+I, [2023-10-08T23:39:20.006455 #1]  INFO -- : Completed 200 OK in 22ms (Views: 10.8ms | ActiveRecord: 4.2ms | Allocations: 5805)
+I, [2023-10-08T23:39:37.377378 #1]  INFO -- : Started GET "/" for 192.168.0.105 at 2023-10-08 23:39:37 +0300
+I, [2023-10-08T23:39:37.378562 #1]  INFO -- : Processing by WelcomeController#index as */*
+I, [2023-10-08T23:39:37.381946 #1]  INFO -- :   Current user: anonymous
+I, [2023-10-08T23:39:37.391338 #1]  INFO -- :   Rendered welcome/index.html.erb within layouts/base (Duration: 0.9ms | Allocations: 349)
+I, [2023-10-08T23:39:37.402997 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 12.6ms | Allocations: 4004)
+I, [2023-10-08T23:39:37.403349 #1]  INFO -- : Completed 200 OK in 25ms (Views: 13.1ms | ActiveRecord: 4.4ms | Allocations: 5847)
+I, [2023-10-08T23:39:37.427362 #1]  INFO -- : Started GET "/projects/sffsf" for 192.168.0.105 at 2023-10-08 23:39:37 +0300
+I, [2023-10-08T23:39:37.429053 #1]  INFO -- : Processing by ProjectsController#show as HTML
+I, [2023-10-08T23:39:37.429218 #1]  INFO -- :   Parameters: {"id"=>"sffsf"}
+I, [2023-10-08T23:39:37.434717 #1]  INFO -- :   Current user: anonymous
+I, [2023-10-08T23:39:37.441686 #1]  INFO -- :   Rendered common/error.html.erb within layouts/base (Duration: 1.6ms | Allocations: 285)
+I, [2023-10-08T23:39:37.504423 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 64.5ms | Allocations: 11543)
+I, [2023-10-08T23:39:37.504743 #1]  INFO -- : Filter chain halted as :find_project rendered or redirected
+I, [2023-10-08T23:39:37.504964 #1]  INFO -- : Completed 404 Not Found in 76ms (Views: 57.1ms | ActiveRecord: 12.1ms | Allocations: 13730)
+I, [2023-10-08T23:39:45.024848 #1]  INFO -- : Started GET "/projects" for 192.168.0.105 at 2023-10-08 23:39:45 +0300
+I, [2023-10-08T23:39:45.026239 #1]  INFO -- : Processing by ProjectsController#index as HTML
+I, [2023-10-08T23:39:45.040175 #1]  INFO -- :   Current user: admin (id=1)
+I, [2023-10-08T23:39:45.080446 #1]  INFO -- :   Rendered projects/index.html.erb within layouts/base (Duration: 28.7ms | Allocations: 9067)
+I, [2023-10-08T23:39:45.131874 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 80.2ms | Allocations: 14880)
+I, [2023-10-08T23:39:45.132254 #1]  INFO -- : Completed 200 OK in 106ms (Views: 72.9ms | ActiveRecord: 18.9ms | Allocations: 18464)
+I, [2023-10-08T23:39:46.381006 #1]  INFO -- : Started GET "/projects/yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy" for 192.168.0.105 at 2023-10-08 23:39:46 +0300
+I, [2023-10-08T23:39:46.382268 #1]  INFO -- : Processing by ProjectsController#show as HTML
+I, [2023-10-08T23:39:46.382393 #1]  INFO -- :   Parameters: {"id"=>"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"}
+I, [2023-10-08T23:39:46.390322 #1]  INFO -- :   Current user: admin (id=1)
+I, [2023-10-08T23:39:46.477009 #1]  INFO -- :   Rendered projects/show.html.erb within layouts/base (Duration: 34.2ms | Allocations: 5699)
+I, [2023-10-08T23:39:46.542997 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 100.2ms | Allocations: 20037)
+I, [2023-10-08T23:39:46.543532 #1]  INFO -- : Completed 200 OK in 161ms (Views: 82.8ms | ActiveRecord: 34.5ms | Allocations: 27978)
+I, [2023-10-08T23:39:50.299789 #1]  INFO -- : Started GET "/" for 127.0.0.1 at 2023-10-08 23:39:50 +0300
+I, [2023-10-08T23:39:50.300603 #1]  INFO -- : Processing by WelcomeController#index as */*
+I, [2023-10-08T23:39:50.304757 #1]  INFO -- :   Current user: anonymous
+I, [2023-10-08T23:39:50.316209 #1]  INFO -- :   Rendered welcome/index.html.erb within layouts/base (Duration: 2.2ms | Allocations: 361)
+I, [2023-10-08T23:39:50.329890 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 15.9ms | Allocations: 4020)
+I, [2023-10-08T23:39:50.330444 #1]  INFO -- : Completed 200 OK in 30ms (Views: 16.7ms | ActiveRecord: 4.3ms | Allocations: 5828)
+I, [2023-10-08T23:40:20.556204 #1]  INFO -- : Started GET "/" for 127.0.0.1 at 2023-10-08 23:40:20 +0300
+I, [2023-10-08T23:40:20.557225 #1]  INFO -- : Processing by WelcomeController#index as */*
+I, [2023-10-08T23:40:20.560398 #1]  INFO -- :   Current user: anonymous
+I, [2023-10-08T23:40:20.572330 #1]  INFO -- :   Rendered welcome/index.html.erb within layouts/base (Duration: 2.1ms | Allocations: 356)
+I, [2023-10-08T23:40:20.583152 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 13.0ms | Allocations: 4010)
+I, [2023-10-08T23:40:20.586859 #1]  INFO -- : Completed 200 OK in 29ms (Views: 17.2ms | ActiveRecord: 4.8ms | Allocations: 5805)
+I, [2023-10-08T23:40:50.789817 #1]  INFO -- : Started GET "/" for 127.0.0.1 at 2023-10-08 23:40:50 +0300
+I, [2023-10-08T23:40:50.790614 #1]  INFO -- : Processing by WelcomeController#index as */*
+I, [2023-10-08T23:40:50.793664 #1]  INFO -- :   Current user: anonymous
+I, [2023-10-08T23:40:50.802566 #1]  INFO -- :   Rendered welcome/index.html.erb within layouts/base (Duration: 0.9ms | Allocations: 358)
+I, [2023-10-08T23:40:50.811635 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 9.9ms | Allocations: 4013)
+I, [2023-10-08T23:40:50.811981 #1]  INFO -- : Completed 200 OK in 21ms (Views: 10.5ms | ActiveRecord: 4.1ms | Allocations: 5825)
+I, [2023-10-08T23:41:21.009140 #1]  INFO -- : Started GET "/" for 127.0.0.1 at 2023-10-08 23:41:21 +0300
+I, [2023-10-08T23:41:21.009939 #1]  INFO -- : Processing by WelcomeController#index as */*
+I, [2023-10-08T23:41:21.016251 #1]  INFO -- :   Current user: anonymous
+I, [2023-10-08T23:41:21.024890 #1]  INFO -- :   Rendered welcome/index.html.erb within layouts/base (Duration: 0.9ms | Allocations: 358)
+I, [2023-10-08T23:41:21.038810 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 14.8ms | Allocations: 4013)
+I, [2023-10-08T23:41:21.039225 #1]  INFO -- : Completed 200 OK in 29ms (Views: 15.4ms | ActiveRecord: 4.7ms | Allocations: 5826)
+I, [2023-10-08T23:41:51.222086 #1]  INFO -- : Started GET "/" for 127.0.0.1 at 2023-10-08 23:41:51 +0300
+I, [2023-10-08T23:41:51.222797 #1]  INFO -- : Processing by WelcomeController#index as */*
+I, [2023-10-08T23:41:51.226885 #1]  INFO -- :   Current user: anonymous
+I, [2023-10-08T23:41:51.236451 #1]  INFO -- :   Rendered welcome/index.html.erb within layouts/base (Duration: 0.8ms | Allocations: 358)
+I, [2023-10-08T23:41:51.251222 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 15.6ms | Allocations: 4013)
+I, [2023-10-08T23:41:51.251555 #1]  INFO -- : Completed 200 OK in 29ms (Views: 16.1ms | ActiveRecord: 4.2ms | Allocations: 5825)
+I, [2023-10-08T23:42:21.447444 #1]  INFO -- : Started GET "/" for 127.0.0.1 at 2023-10-08 23:42:21 +0300
+I, [2023-10-08T23:42:21.448251 #1]  INFO -- : Processing by WelcomeController#index as */*
+I, [2023-10-08T23:42:21.451475 #1]  INFO -- :   Current user: anonymous
+I, [2023-10-08T23:42:21.460379 #1]  INFO -- :   Rendered welcome/index.html.erb within layouts/base (Duration: 0.8ms | Allocations: 358)
+I, [2023-10-08T23:42:21.469659 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 10.1ms | Allocations: 4013)
+I, [2023-10-08T23:42:21.469967 #1]  INFO -- : Completed 200 OK in 21ms (Views: 10.6ms | ActiveRecord: 3.8ms | Allocations: 5825)
+I, [2023-10-08T23:42:51.830364 #1]  INFO -- : Started GET "/" for 127.0.0.1 at 2023-10-08 23:42:51 +0300
+I, [2023-10-08T23:42:51.833741 #1]  INFO -- : Processing by WelcomeController#index as */*
+I, [2023-10-08T23:42:51.846833 #1]  INFO -- :   Current user: anonymous
+I, [2023-10-08T23:42:51.879040 #1]  INFO -- :   Rendered welcome/index.html.erb within layouts/base (Duration: 4.9ms | Allocations: 358)
+I, [2023-10-08T23:42:51.900643 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 26.5ms | Allocations: 4013)
+I, [2023-10-08T23:42:51.901197 #1]  INFO -- : Completed 200 OK in 67ms (Views: 27.4ms | ActiveRecord: 17.7ms | Allocations: 5825)
+I, [2023-10-08T23:43:22.131904 #1]  INFO -- : Started GET "/" for 127.0.0.1 at 2023-10-08 23:43:22 +0300
+I, [2023-10-08T23:43:22.133033 #1]  INFO -- : Processing by WelcomeController#index as */*
+I, [2023-10-08T23:43:22.136197 #1]  INFO -- :   Current user: anonymous
+I, [2023-10-08T23:43:22.145679 #1]  INFO -- :   Rendered welcome/index.html.erb within layouts/base (Duration: 1.1ms | Allocations: 358)
+I, [2023-10-08T23:43:22.155712 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 11.2ms | Allocations: 4013)
+I, [2023-10-08T23:43:22.156093 #1]  INFO -- : Completed 200 OK in 23ms (Views: 11.7ms | ActiveRecord: 4.6ms | Allocations: 5825)
+I, [2023-10-08T23:43:52.509566 #1]  INFO -- : Started GET "/" for 127.0.0.1 at 2023-10-08 23:43:52 +0300
+I, [2023-10-08T23:43:52.512504 #1]  INFO -- : Processing by WelcomeController#index as */*
+I, [2023-10-08T23:43:52.524843 #1]  INFO -- :   Current user: anonymous
+I, [2023-10-08T23:43:52.556862 #1]  INFO -- :   Rendered welcome/index.html.erb within layouts/base (Duration: 2.2ms | Allocations: 358)
+I, [2023-10-08T23:43:52.602609 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 47.3ms | Allocations: 4013)
+I, [2023-10-08T23:43:52.603785 #1]  INFO -- : Completed 200 OK in 91ms (Views: 50.5ms | ActiveRecord: 17.1ms | Allocations: 5825)
+I, [2023-10-08T23:44:22.825016 #1]  INFO -- : Started GET "/" for 127.0.0.1 at 2023-10-08 23:44:22 +0300
+I, [2023-10-08T23:44:22.825747 #1]  INFO -- : Processing by WelcomeController#index as */*
+I, [2023-10-08T23:44:22.828540 #1]  INFO -- :   Current user: anonymous
+I, [2023-10-08T23:44:22.837041 #1]  INFO -- :   Rendered welcome/index.html.erb within layouts/base (Duration: 1.0ms | Allocations: 358)
+I, [2023-10-08T23:44:22.850286 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 14.3ms | Allocations: 4013)
+I, [2023-10-08T23:44:22.850665 #1]  INFO -- : Completed 200 OK in 25ms (Views: 14.8ms | ActiveRecord: 4.2ms | Allocations: 5825)
+I, [2023-10-08T23:44:53.070639 #1]  INFO -- : Started GET "/" for 127.0.0.1 at 2023-10-08 23:44:53 +0300
+I, [2023-10-08T23:44:53.071439 #1]  INFO -- : Processing by WelcomeController#index as */*
+I, [2023-10-08T23:44:53.075496 #1]  INFO -- :   Current user: anonymous
+I, [2023-10-08T23:44:53.087749 #1]  INFO -- :   Rendered welcome/index.html.erb within layouts/base (Duration: 0.9ms | Allocations: 358)
+I, [2023-10-08T23:44:53.098214 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 11.4ms | Allocations: 4013)
+I, [2023-10-08T23:44:53.098636 #1]  INFO -- : Completed 200 OK in 27ms (Views: 12.0ms | ActiveRecord: 4.4ms | Allocations: 5825)
+I, [2023-10-08T23:45:23.344969 #1]  INFO -- : Started GET "/" for 127.0.0.1 at 2023-10-08 23:45:23 +0300
+I, [2023-10-08T23:45:23.346010 #1]  INFO -- : Processing by WelcomeController#index as */*
+I, [2023-10-08T23:45:23.351152 #1]  INFO -- :   Current user: anonymous
+I, [2023-10-08T23:45:23.366218 #1]  INFO -- :   Rendered welcome/index.html.erb within layouts/base (Duration: 0.9ms | Allocations: 358)
+I, [2023-10-08T23:45:23.384452 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 19.2ms | Allocations: 4013)
+I, [2023-10-08T23:45:23.384835 #1]  INFO -- : Completed 200 OK in 39ms (Views: 19.7ms | ActiveRecord: 5.9ms | Allocations: 5825)
+I, [2023-10-08T23:45:53.621898 #1]  INFO -- : Started GET "/" for 127.0.0.1 at 2023-10-08 23:45:53 +0300
+I, [2023-10-08T23:45:53.622619 #1]  INFO -- : Processing by WelcomeController#index as */*
+I, [2023-10-08T23:45:53.625343 #1]  INFO -- :   Current user: anonymous
+I, [2023-10-08T23:45:53.634381 #1]  INFO -- :   Rendered welcome/index.html.erb within layouts/base (Duration: 0.9ms | Allocations: 358)
+I, [2023-10-08T23:45:53.643566 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 10.1ms | Allocations: 4013)
+I, [2023-10-08T23:45:53.643877 #1]  INFO -- : Completed 200 OK in 21ms (Views: 10.7ms | ActiveRecord: 4.2ms | Allocations: 5825)
+I, [2023-10-08T23:46:23.833561 #1]  INFO -- : Started GET "/" for 127.0.0.1 at 2023-10-08 23:46:23 +0300
+I, [2023-10-08T23:46:23.834261 #1]  INFO -- : Processing by WelcomeController#index as */*
+I, [2023-10-08T23:46:23.836935 #1]  INFO -- :   Current user: anonymous
+I, [2023-10-08T23:46:23.846089 #1]  INFO -- :   Rendered welcome/index.html.erb within layouts/base (Duration: 1.0ms | Allocations: 358)
+I, [2023-10-08T23:46:23.857122 #1]  INFO -- :   Rendered layout layouts/base.html.erb (Duration: 12.1ms | Allocations: 4013)
+I, [2023-10-08T23:46:23.857434 #1]  INFO -- : Completed 200 OK in 23ms (Views: 12.8ms | ActiveRecord: 3.5ms | Allocations: 5825)

@@ -9,13 +9,15 @@ services:
     ports:
       - 80:3000
     volumes:
-      - ./app/data/docker_redmine_plugins:${REDMINE_PLUGINS}
-      - ./app/data/docker_redmine_themes:${REDMINE_THEMES}
-      - ./app/data/docker_redmine_data:${REDMINE_DATA}
-      - ./app/data/docker_redmine_logs:${REDMINE_LOGS}
-      # Configuration files
-      - ./app/data/docker_redmine_config/configuration.yml:${REDMINE_CONFIG}
-      #- ./app/data/docker_redmine_config/additional_environment.rb:${REDMINE_LOG_CONFIG}
+      - ./app/data/redmine_plugins:${REDMINE_PLUGINS}
+      - ./app/data/redmine_themes:${REDMINE_THEMES}
+      - ./app/data/redmine_data:${REDMINE_DATA}
+      - ./app/data/redmine_logs:${REDMINE_LOGS}
+      #------------ Configuration files ------------
+      # config email natification
+      - ./app/data/redmine_config/configuration.yml:${REDMINE_CONFIG}
+      # config logs
+      - ./app/data/redmine_config/additional_environment.rb:${REDMINE_LOG_CONFIG}
     environment:
       TZ: Europe/Kyiv
       REDMINE_DB_MYSQL: db
@@ -44,7 +46,7 @@ services:
     command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci", "--explicit_defaults_for_timestamp=true"]
     volumes:
       - ./db/data/mysql_data:${DB_DATA}
-      - ./db/data/mysql_logs:${DB_LOGS}
+      #- ./db/data/mysql_logs:${DB_LOGS}
     healthcheck:
       test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u $REDMINE_DB_USER --password=$REDMINE_DB_PASSWORD"]
       interval: 30s
