@@ -9,3 +9,11 @@ production:
        authentication: :plain
        user_name: "atestservices@gmail.com"
        password: "18790207"
+
+
+
+       log_rotate: true
+       log_rotate_frequency: daily
+       log_rotate_max_age: 30
+       log_rotate_size: 100M
+       log_rotate_keep: 10
