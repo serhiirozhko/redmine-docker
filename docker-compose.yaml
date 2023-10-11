@@ -8,13 +8,12 @@ services:
     container_name: ${DB_IMG_VER}
     env_file: .env
     environment:
-      TZ: "Europe/Kiev"
       MYSQL_ROOT_PASSWORD: ${REDMINE_DB_PASSWORD}
       MYSQL_DATABASE: ${REDMINE_DB_NAME}
     volumes:
       - ./db/data/mysql_data:${DB_DATA}
       - ./db/mysql_config/my.cnf:${DB_CONFIG}
-      - ./db/backup:/media/backup
+      #- ./restore:/docker-entrypoint-initdb.d
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", -hdb, -u$REDMINE_DB_USER, -p$REDMINE_DB_PASSWORD]
       interval: 30s
