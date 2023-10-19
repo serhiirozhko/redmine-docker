@@ -8,6 +8,7 @@ services:
     container_name: ${DB_IMG_VER}
     env_file: .env
     environment:
+      TZ: "Europe/Kiev"
       MYSQL_ROOT_PASSWORD: ${REDMINE_DB_PASSWORD}
       MYSQL_DATABASE: ${REDMINE_DB_NAME}
     volumes:
