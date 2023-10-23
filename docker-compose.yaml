@@ -12,11 +12,7 @@ services:
     volumes:
       - ./db/data/mysql_data:${DB_DATA}
       - ./db/mysql_config/my.cnf:${DB_CONFIG}
-<<<<<<< HEAD
       - ./initdb:/docker-entrypoint-initdb.d
-=======
-      #- ./restore:/docker-entrypoint-initdb.d
->>>>>>> origin/main
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-hdb", "-u$REDMINE_DB_USER", "-p$REDMINE_DB_PASSWORD"]
       interval: 30s
@@ -44,7 +40,6 @@ services:
       - ./app/redmine_plugins:${REDMINE_PLUGINS}
       - ./app/redmine_themes:${REDMINE_THEMES}
       - ./app/data/redmine_data:${REDMINE_DATA}
-      - ./app/data/redmine_logs:${REDMINE_LOGS}
       - ./app/redmine_config/configuration.yml:${REDMINE_CONFIG}
     environment:
       TZ: "Europe/Kiev"
