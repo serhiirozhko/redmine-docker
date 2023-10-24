@@ -30,93 +30,127 @@
 ```
 ## Опис файла docker-compose.yaml
 ```yaml
-version: '3.8' Версія файла
-services: #Контейнери які будут запущені
-# MySQL database custom images
-  db:
+version: '3.8' # Версія файла
+services: # Контейнери які будут запущені
+# Опис контейнера Mysql
+  db: # Назва служби
     build:
-      context: ./db
-    image: mysql:${DB_IMG_VER}
-    container_name: ${DB_IMG_VER}
-    environment:
-      MYSQL_ROOT_PASSWORD: ${REDMINE_DB_PASSWORD}
-      MYSQL_DATABASE: ${REDMINE_DB_NAME}
+      context: ./db # Вказуєм де шукати Dockerfile для збірки образа 
+    image: mysql:${DB_IMG_VER} # Назва яка буде приствоєна образу
+    container_name: ${DB_IMG_VER} # Назва яка буде присвоєна контейнеру.
+    environment: # Змінні середовища для контейнера
+      MYSQL_ROOT_PASSWORD: ${REDMINE_DB_PASSWORD} # Встановлення пароля для кореневого користувача MySQL
+      MYSQL_DATABASE: ${REDMINE_DB_NAME} # Встановлення імені для бази даних
     volumes:
-      - ./db/data/mysql_data:${DB_DATA}
-      - ./db/mysql_config/my.cnf:${DB_CONFIG}
-      - ./initdb:/docker-entrypoint-initdb.d
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-hdb", "-u$REDMINE_DB_USER", "-p$REDMINE_DB_PASSWORD"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
-      start_period: 60s
-    logging:
-      driver: "json-file"
+      - ./db/data/mysql_data:${DB_DATA} # Монтуємо директорію 'DB_DATA' на хості, для збереження даних.
+      - ./db/mysql_config/my.cnf:${DB_CONFIG} # Монтуємо файл конфігурацій.
+      - ./initdb:/docker-entrypoint-initdb.d # Заризирвована директорія для ініціалізації бази даних MySQL під час створення контейнера. Файли, розміщені в цій директорії на хості, будуть виконані під час запуску контейнера і можуть містити SQL-запити для створення початкових даних в базі даних.
+    healthcheck: # healthcheck це механізм, який допомагає визначити, чи працює контейнер коректно
+      test: ["CMD", "mysqladmin", "ping", "-hdb", "-u$REDMINE_DB_USER", "-p$REDMINE_DB_PASSWORD"] # Команда яка перевіряю доступності бази даних.
+      interval: 30s # Це параметр вказує, що перевірка повинна запускатися кожні 30 секунд.
+      timeout: 10s # Максимальний час очікування для виконання тест.
+      retries: 5 # Якщо тест не вдалося виконати успішно, цей параметр вказує, що буде спробовано ще 5 разів перед тим, як контейнер буде визнаний несправним.
+      start_period: 60s # Цей параметр вказує, що перевірка не буде запущена протягом перших 60 секунд після запуску контейнера. Це портібно для того щоб контейнері встиг запуститись сервіс.
+    logging: # Логування контейнера.
+      driver: "json-file" # Ця стрічка вказує, що для логування використовується JSON-файловий драйвер. JSON-файловий драйвер записує логи в JSON-форматі у файлову систему хоста.
       options:
-        max-size: "50m"
-        max-file: "2"
-        compress: "true"
-    networks:
-      - redmine-network
-    restart: always
-# Redmine custom images
-  app:
+        max-size: "50m" # Вказуємо максимальний розмір кожного лог-файлу.
+        max-file: "2" # Вказує максимальну кількість лог-файлів.
+        compress: "true" # Цей параметр вказує, що лог-файл має бути стиснутий (архівований)
+    networks: # Вказуєм мережу, до якої приєднається контейнер.
+      - redmine-network # Назва мережі.
+    restart: always # Автоматичний перезапуск в разі якщо він припинить роботу.
+# Опис контейнера Redmine
+  app: # Назва служби
     build:
-      context: ./app
-    image: redmine:${REDMINE_IMG_VER}
-    container_name: ${REDMINE_IMG_VER}
-    ports:
-      - 80:3000
+      context: ./app # Вказуєм де шукати Dockerfile для збірки образа 
+    image: redmine:${REDMINE_IMG_VER} # Назва яка буде приствоєна образу
+    container_name: ${REDMINE_IMG_VER} # Назва яка буде присвоєна контейнеру.
+    ports: # Мапування портів між хостом та контейнером.
+      - 80:3000 # Порт 80 зовнішній порт, 3000 - внутрішній.
     volumes:
-      - ./app/redmine_plugins:${REDMINE_PLUGINS}
-      - ./app/redmine_themes:${REDMINE_THEMES}
-      - ./app/data/redmine_data:${REDMINE_DATA}
-      - ./app/redmine_config/configuration.yml:${REDMINE_CONFIG}
-    environment:
-      TZ: "Europe/Kiev"
-      LANG: "en_US.utf8"
-      REDMINE_DB_MYSQL: db
-      REDMINE_DB_DATABASE: ${REDMINE_DB_NAME}
-      REDMINE_DB_USERNAME: ${REDMINE_DB_USER}
-      REDMINE_DB_PASSWORD: ${REDMINE_DB_PASSWORD}
-    depends_on:
+      - ./app/redmine_plugins:${REDMINE_PLUGINS} # Монтуємо директорію 'REDMINE_PLUGINS' на хості, для збереження даних плагінів.
+      - ./app/redmine_themes:${REDMINE_THEMES} # Монтуємо директорію 'REDMINE_THEMES' на хості, для збереження даних тем.
+      - ./app/data/redmine_data:${REDMINE_DATA} # Монтуємо директорію 'REDMINE_DATA' на хості, для збереження даних.
+      - ./app/redmine_config/configuration.yml:${REDMINE_CONFIG} # Монтуємо файл конфігурацій, в даному випадку прописана конфігурація для поштового сервира.
+    environment: # Змінні середовища для контейнера
+      TZ: "Europe/Kiev" #  Встановлює часовий пояс для контейнера.
+      LANG: "en_US.utf8" # Встановлює локаль для контейнера
+      REDMINE_DB_MYSQL: db # Встановлює ім'я хоста або адресу сервера бази даних, яка пов'язана з контейнером. У нашому випадку, ім'я хоста "db". 
+      REDMINE_DB_DATABASE: ${REDMINE_DB_NAME} # Назва бази даних.
+      REDMINE_DB_USERNAME: ${REDMINE_DB_USER} # Користувач бази даних.
+      REDMINE_DB_PASSWORD: ${REDMINE_DB_PASSWORD} # Пороль користувача бази даних.
+    depends_on: # Вказуєм на наявність залежностей для контейнера
       db:
-        condition: service_healthy
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
-    logging:
-      driver: "json-file"
+        condition: service_healthy # Цей параметр вказує, що залежність буде враховувати стан контейнера "db". Контейнер Redmine буде чекати, доки контейнер "db" не прйде тест (healthy), перш ніж виконувати свої операції.
+    healthcheck: # healthcheck це механізм, який допомагає визначити, чи працює контейнер коректно
+      test: ["CMD", "curl", "-f", "http://localhost:3000"] # Команда яка перевіряю доступності сервіса на порту 3000
+      interval: 30s # Це параметр вказує, що перевірка повинна запускатися кожні 30 секунд.
+      timeout: 10s # Максимальний час очікування для виконання тест.
+      retries: 5 # Якщо тест не вдалося виконати успішно, цей параметр вказує, що буде спробовано ще 5 разів перед тим, як контейнер буде визнаний несправним.
+    logging: # Логування контейнера.
+      driver: "json-file" # Ця стрічка вказує, що для логування використовується JSON-файловий драйвер. JSON-файловий драйвер записує логи в JSON-форматі у файлову систему хоста.
       options:
-        max-size: "50m"
-        max-file: "2"
-        compress: "true"
-    networks:
-      - redmine-network
-    restart: always
-
-networks:
+        max-size: "50m" # Вказуємо максимальний розмір кожного лог-файлу.
+        max-file: "2" # Вказує максимальну кількість лог-файлів.
+        compress: "true" # Цей параметр вказує, що лог-файл має бути стиснутий (архівований)
+    networks: # Вказуєм мережу, до якої приєднається контейнер.
+      - redmine-network # Назва мережі.
+    restart: always # Автоматичний перезапуск в разі якщо він припинить роботу.
+    
+networks: # Цей фрагмент конфігурації визначає мережу з назвою "redmine-network" і встановлює для неї драйвер "bridge", І визначає мережу як глобальну, до якої можуть приєднатися всі контейнери в проекті.
   redmine-network:
     driver: bridge
 ```
+В директоріях ./app і ./db є Dockerfile - це конфігураційні файли, які містить інструкції для створення образів, в даному випадку використовуються официйні образи redmine і mysql-ce.
 
+## Опис файла .env 
+Файл .env використовується для зберігання змінних середовища, які використвуються в Docker Compose конфігурації.
 
+## Основні команди Docker Compose
 
-
-
-
-# ./app
- - Директорія `data > redmine_data` монтується через docker volume до директорій `/usr/src/redmine/files` всередині контейнера, ця директорія потрібна для збереженя файлів проєктів.
- - Директорія `redmine_config` і файл `configuration.yml` створюється вручну, файл `configuration.yml` містить в цьому випадку конфігурацію поштового сервера, монтується через docker volume до директорій `/usr/src/redmine/config/configuration.yml`
- - Директорій `redmine_plugins` монтується через docker volume до директорій `/usr/src/redmine/plugins` ця директорія потрібна для підключення і збереження плагінів.
- - Директорій `redmine_themes`  монтується через docker volume до директорій `/usr/src/redmine/public/themes` ця директорія потрібна для підключення і збереження тем.
-
-Dockerfile - потрібен для бідла образа який будується на орігінальному образі redmine і вразі необхідності в нього можна буде внести зміни, наприклад встановити залежності для плагінів.
-# ./db
- -   Директорія `data > mysql_data` монтується через docker volume до директорій `/var/lib/mysql` всередині контейнера, ця директорія потрібна для збереженя всіх файлів бази даних.
- - Директорія `mysql_config` і файл `my.cnf` створюється вручну, файл `my.cnf` містить конфігурацію бази даних, монтується через docker volume до директорій `/etc/mysql/my.cnf`
-
-Dockerfile - потрібен для бідла образа який будується на орігінальному образі mysql і вразі необхідності в нього можна буде внести зміни.
+Запуск крнтейнерів на основі конфігурації, виконувати в директорій знаходження docker-compose файла
+```
+docker-compose up
+```
+Ця команда зупиняє та видаляє всі контейнери, які були створені з `docker-compose up`.
+```
+docker-compose down
+```
+Ця команда виводить інформацію про статус контейнерів.
+```
+docker-compose ps
+```
+Ця команда дозволяє переглядати журнали логів для сервісів.
+```
+docker-compose logs container_name
+```
+Ця команда дозволяє підєднатися до контейнера.
+```
+docker-compose exec -it container_name /bin/bash
+```
+Ця команда виконує збірку образів
+```
+docker-compose build
+```
+Ця команда запускає контейнери в фоновому режимі (без виводу їхніх логів в термінал).
+```
+docker-compose up -d
+```
+Ця команда зупиняє контейнери, але залишає їх у стані, в якому вони можуть бути запущені пізніше.
+```
+docker-compose stop
+```
+Ця команда стартує контейнери, якщо вони були раніше зупинені, не перезапускаючи їх.
+```
+docker-compose start
+```
+Ця команда перезапускає контейнери.
+```
+docker-compose restart
+```
+Ця команда виводить журнали логів у режимі живого виведення (live mode)
+```
+docker-compose logs -f 
+```
+> Примітка: Завантажити шаблон для розгортання сервісу `git clone https://github.com/serhiirozhko/redmine-docker.git`
