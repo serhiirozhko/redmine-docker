@@ -14,6 +14,7 @@
 ## Структура директорій і файлів проекту 
 
 ```
+.
 ├── app
 │   ├── data
 │   │   └── redmine_data
@@ -23,6 +24,8 @@
 │   ├── redmine_plugins
 │   └── redmine_themes
 ├── db
+│   ├── data
+│   │   └── mysql_data
 │   ├── Dockerfile
 │   └── mysql_config
 │       └── my.cnf
@@ -30,8 +33,9 @@
 ├── initdb
 ├── README.md
 ├── script
-   └── backup.sh
+    └── backup.sh
 ```
+
 ## Опис файла docker-compose.yaml
 ```yaml
 version: '3.8' # Версія файла
@@ -161,7 +165,7 @@ docker-compose logs -f
 
 ## Скрипт для створеня резервних копій бази даних та файлів redmine
 
-```
+```bash
 #!/bin/bash
 # Шлях до файлу .env
 export DOTENV=/home/pronetware/bkp/bkp-redmine-docker/.env
@@ -184,7 +188,7 @@ if [ -f "$DOTENV" ]; then
   fi
 
 # Ім'я файлу для резервної копії
-  backup_file="backup-db-$(date +%Y-%m-%d_%H-%M).sql"
+  backup_file="$DB_IMG_VER-$(date +%Y-%m-%d_%H-%M).sql"
 # Виконуємо mysqldump і перенаправляємо виведення у тимчасовий файл
   temp_file="/tmp/temp_backup.sql"
   docker exec $DB_IMG_VER /usr/bin/mysqldump $REDMINE_DB_NAME > "$temp_file"
