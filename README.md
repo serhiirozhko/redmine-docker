@@ -1,6 +1,6 @@
 # Redmine docker-compose
 
-## Версій ПО Dockerhost
+## Dockerhost
 
  - Ubuntu server 22.04
  - Docker 24.0.6, build ed223bc
