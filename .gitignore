@@ -1,1 +1,4 @@
+
 updategit.sh
+./db/data/
+./initdb
