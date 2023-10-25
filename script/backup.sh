@@ -1,6 +1,6 @@
 #!/bin/bash
 # Шлях до файлу .env
-export DOTENV=/home/pronetware/bkp/bkp-redmine-docker/.env
+export DOTENV=/home/pronetware/project/new/redmine-docker/.env
 # Завантаження змінних оточення з .env
 if [ -f "$DOTENV" ]; then
   source "$DOTENV"
@@ -20,7 +20,7 @@ if [ -f "$DOTENV" ]; then
   fi
 
 # Ім'я файлу для резервної копії
-  backup_file="backup-db-$(date +%Y-%m-%d_%H-%M).sql"
+  backup_file="$DB_IMG_VER-$(date +%Y-%m-%d:%H-%M).sql"
 # Виконуємо mysqldump і перенаправляємо виведення у тимчасовий файл
   temp_file="/tmp/temp_backup.sql"
   docker exec $DB_IMG_VER /usr/bin/mysqldump $REDMINE_DB_NAME > "$temp_file"
@@ -43,7 +43,7 @@ if [ -f "$DOTENV" ]; then
   fi
 
   # Використання команди rsync для копіювання даних
-  rsync -av /home/pronetware/bkp/bkp-redmine-docker/app/data/redmine_data $backup_dir_files
+  rsync -av /home/pronetware/project/new/redmine-docker/app/data/redmine_data $backup_dir_files
 else
   echo "Файл .env не найден."
 fi

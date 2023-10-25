@@ -216,3 +216,27 @@ else
   echo "Файл .env не найден."
 fi
 ```
+
+## Приклад встановлення та видалення плагіна що не потребує міграції бд в redmine docker
+Для встановлення плагіна потрібно скопіювати плагін в директорію ` project/app/redmine_plugins/`
+і виконати команду в директорій проекту (більш детально про встановлення потрібно читати в документацій плагіна)
+```bash
+docker-compose exec app bundle install
+```
+Приклад виводу успішного встановлення 
+
+`Bundle complete! 49 Gemfile dependencies, 80 gems now installed.
+Gems in the groups 'development' and 'test' were not installed.
+Use bundle info [gemname] to see where a bundled gem is installed.`
+
+Після встановлення потрібно перезапустити контейнер redmine
+```bash
+docker-compose restart app
+```
+Для видалення плагіна потрібно просто видалити плагін с директорій `project/app/redmine_plugins/`
+та перезапустити контейнер redmine
+
+## Приклад встановлення та видалення теми в redmine docker
+Для встановлення теми потрібно скопіювати тему в директорію ` project/app/redmine_themes/`
+та активувати нову тему в налаштуваннях Redmine `Administration > Settings > Display > Theme`
+Для видалення теми потрібно просто видалити тему с директорій
